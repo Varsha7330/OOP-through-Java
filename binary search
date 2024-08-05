@@ -1,0 +1,37 @@
+import java.util.Scanner;
+class Binary{
+	public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter n value: ");
+		int n=sc.nextInt();
+		int[] arr=new int[n];
+		System.out.println("enter array elements: ");
+		for( int i=0;i<n;i++) 
+		{
+			arr[i]=sc.nextInt();
+		}
+		System.out.println("enter key element: ");
+		int key=sc.nextInt();
+		int result=binary( arr,key);
+		if(result== -1) {
+			System.out.println("element not found");
+		}
+		else {
+			System.out.println("element found at index "+ result);
+		}
+		sc.close();
+	}
+	public static int binary(int[] arr,int key) {
+	int low=0,high=arr.length,mid;
+	while (low<=high) {
+		mid=(low+high)/2;
+		if(arr[mid]==key)
+			return mid;
+		if (key>arr[mid])
+			low=mid+1;
+		else
+			high=mid-1;
+		}
+		return -1;
+	}
+}
